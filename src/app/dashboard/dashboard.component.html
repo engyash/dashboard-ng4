@@ -2,7 +2,28 @@
   <div class="col-md-12 widget"> 
       <div class="lower">
         <vertical-split-pane primary-component-initialratio="0.8">
-          <div class="split-pane-content-primary">           
+          <div class="split-pane-content-primary">     
+            <div class="alert-success">{{statusMessage}}</div>
+            <hr>
+            <input type="button" value="Add" class="btn btn-default" (click)="addProject()" />
+            <div style="overflow:auto">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <td>Id</td>
+                    <td>Title</td>
+                    <td>Color</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let project of projects;let i=idx">
+                    <ng-template [ngTemplateOutlet]="loadTemplate(project)" [ngOutletContext]="{ $implicit: project, idx: i }"></ng-template>
+                  </tr>
+                </tbody>
+              </table>
+            </div>            
           </div>
           <div class="split-pane-content-secondary">            
           </div>
@@ -10,3 +31,35 @@
       </div>
   </div>
 </div>
+
+              <!--The Html Template for Read-Only Rows-->
+            <ng-template #readOnlyTemplate let-project>
+              <td>{{project._id}}</td>
+              <td>{{project.Title}}</td>
+              <td>{{project.Color}}</td>
+              <td>
+                <input type="button" value="Edit" class="btn btn-default" (click)="editProject(project)" />
+              </td>
+              <td>
+                <input type="button" value="Delete" (click)="deleteProject(project)" class="btn btn-danger" />
+              </td>
+            </ng-template>
+            <!--Ends Here-->
+            <!--The Html Template for Editable Rows-->
+            <ng-template #editTemplate>
+              <td>
+                <input type="text" [(ngModel)]="selProject._id" readonly disabled />
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="selProject.Title" />
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="selProject.Color" />
+              </td>
+              <td>
+                <input type="button" value="Save" (click)="saveProject()" class="btn btn-success" />
+              </td>
+              <td>
+                <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
+              </td>
+            </ng-template>
