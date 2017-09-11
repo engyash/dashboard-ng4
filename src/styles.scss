@@ -3,6 +3,7 @@
 .header {
   height:20px;
   width:100%;
+  margin-bottom: 3px;
   border: 1px solid blue;
   background-color:darkblue;
 }
@@ -15,6 +16,26 @@
 }
 
 .widget {
-  height: 400px;
+  height: 500px;
   border: 1px solid gray;
+}
+
+.lower {
+  height: 100%;
+  width: 100%;
+  background-color: #F3F3F3;
+}
+
+.left {
+  height: 100%;
+  background-color: black;
+}
+
+.right {
+  height: 100%;
+  background-color: black;
+}
+
+.handle {
+  display:none;
 }
