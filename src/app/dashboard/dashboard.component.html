@@ -34,7 +34,7 @@
 
               <!--The Html Template for Read-Only Rows-->
             <ng-template #readOnlyTemplate let-project>
-              <td>{{project._id}}</td>
+              <td>{{project.Id}}</td>
               <td>{{project.Title}}</td>
               <td>{{project.Color}}</td>
               <td>
@@ -48,7 +48,7 @@
             <!--The Html Template for Editable Rows-->
             <ng-template #editTemplate>
               <td>
-                <input type="text" [(ngModel)]="selProject._id" readonly disabled />
+                <input type="text" [(ngModel)]="selProject.Id" readonly disabled />
               </td>
               <td>
                 <input type="text" [(ngModel)]="selProject.Title" />

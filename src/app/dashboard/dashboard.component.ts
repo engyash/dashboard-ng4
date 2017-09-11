@@ -33,13 +33,14 @@ export class DashboardComponent implements OnInit {
     }
 
     private loadProject() {
-        this.projects = [{ _id: '1', Title: 'test title 1', Color: 'Blue', Text: 'testing 1' },
-            { _id: '2', Title: 'test title 2', Color: 'Red', Text: 'testing 2' }];
+        this.projects = [{ Id: 1, Title: 'test title 1', Color: 'Blue', Text: 'testing 1' },
+            { Id: 2, Title: 'test title 2', Color: 'Red', Text: 'testing 2' }];
     }
 
     //5. Add Project
     addProject() {
-        this.selProject = new Project('', '', '', '');
+        var maxId = Math.max.apply(Math, this.projects.map(function (o) { return o.Id; }));
+        this.selProject = new Project(maxId + 1, '', '', '');
         this
             .projects
             .push(this.selProject);
@@ -53,7 +54,7 @@ export class DashboardComponent implements OnInit {
 
     //7. Load either Read-Onoy Template or EditTemplate
     loadTemplate(project: Project) {
-        if (this.selProject && this.selProject._id == project._id) {
+        if (this.selProject && this.selProject.Id == project.Id) {
             return this.editTemplate;
         } else {
             return this.readOnlyTemplate;
@@ -65,7 +66,6 @@ export class DashboardComponent implements OnInit {
         if (this.isNewRecord) {
             //add a new Project
 
-            this.selProject._id = Math.random().toString();
             this.statusMessage = 'Record Added Successfully.',
             this.isNewRecord = false;
             this.selProject = null;
@@ -84,7 +84,7 @@ export class DashboardComponent implements OnInit {
     //10 Delete Project
     deleteProject(project: Project) {
         this.projects = this.projects.filter(function (obj) {
-            return obj._id !== project._id;
+            return obj.Id !== project.Id;
         });
     }
 
