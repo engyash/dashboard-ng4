@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
     message: string;
     project: Project;
     selProject: Project;
+    selectedProject: Project;
     projects: Array<Project>;
     isNewRecord: boolean;
     statusMessage: string;
@@ -86,6 +87,11 @@ export class DashboardComponent implements OnInit {
         this.projects = this.projects.filter(function (obj) {
             return obj.Id !== project.Id;
         });
+    }
+
+    //11 Select Project
+    selectProject(project: Project) {
+        this.selectedProject = project;
     }
 
  }

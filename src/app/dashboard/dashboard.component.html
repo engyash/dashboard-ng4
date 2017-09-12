@@ -23,13 +23,19 @@
                   </tr>
                 </tbody>
               </table>
+              <textarea class="col-md-12">{{selectedProject ? selectedProject.Text:''}}</textarea>
             </div>            
           </div>
           <div class="split-pane-content-secondary"  [sortablejs]="projects"  [sortablejsOptions]="{ animation: 1000 }">            
-            <div class="col-md-12" style="background-color:lightgray;margin-top:2px;" *ngFor="let project of projects">
-              <div class="row">
-                <div class="col-md-2" [ngStyle]="{'border-color':project.Color}" style="border-left:4px solid;height:50px;">#{{project.Id}}</div>
-                <div class="col-md-8"><b>{{project.Title}}</b><br />{{project.Text}}</div>
+            <div class="col-md-12" 
+                 style="margin-top:2px;"                  
+                 *ngFor="let project of projects"
+                 [ngStyle]="{'background-color':selectedProject && selectedProject.Id==project.Id?project.Color:'lightgray','color':selectedProject && selectedProject.Id==project.Id?'#fff':'#000'}">
+              <div class="row"
+                   (click)="selectProject(project)">
+                <div class="col-md-2" [ngStyle]="{'border-color':project.Color}" style="border-left:4px solid;height:50px;cursor:pointer"
+                     >#{{project.Id}}</div>
+                <div class="col-md-8" style="cursor:pointer"><b>{{project.Title}}</b><br />{{project.Text}}</div>
                 <div class="col-md-1" style="line-height:50px;vertical-align:middle;cursor:move"><i class="fa fa-ellipsis-v"></i></div>
               </div>
             </div>
