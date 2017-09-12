@@ -26,6 +26,14 @@
             </div>            
           </div>
           <div class="split-pane-content-secondary">            
+            <div class="col-md-12" style="background-color:lightgray;margin-top:2px;" *ngFor="let project of projects">
+              <div class="row">
+                <div class="col-md-2" [ngStyle]="{'border-color':project.Color}" style="border-left:4px solid;height:50px;">#{{project.Id}}</div>
+                <div class="col-md-8"><b>{{project.Title}}</b><br />{{project.Text}}</div>
+                <div class="col-md-1" style="line-height:50px;vertical-align:middle;"><i class="fa fa-ellipsis-v"></i></div>
+              </div>
+            </div>
+          
           </div>
         </vertical-split-pane>
       </div>
