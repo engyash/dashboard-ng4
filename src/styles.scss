@@ -1,10 +1,8 @@
 ﻿/* You can add global styles to this file, and also import other style files */
 
 .header {
-  height:20px;
-  width:100%;
-  margin-bottom: 3px;
-  border: 1px solid blue;
+  height:30px;
+  width:100%;  
   background-color:darkblue;
 }
 
@@ -39,4 +37,8 @@
 
 .handle {
   display:none;
+}
+
+.split-pane-content-primary {
+  padding: 5px 5px 20px 5px;
 }
