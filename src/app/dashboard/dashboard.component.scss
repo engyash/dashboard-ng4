@@ -1,0 +1,53 @@
+﻿
+.dashboard {
+  padding: 2px !important;
+}
+
+.dashboard-widget {
+  min-height: 500px !important;
+  border: 1px solid gray;
+  border-bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #F3F3F3;
+}
+
+.split-pane-content-primary {
+  padding: 5px 0 20px 5px;
+}
+
+.handle {
+  display: none;
+}
+
+.project-list {
+  overflow: auto;
+  margin-top: 2px;
+
+  .sno {
+    border-left: 4px solid;
+    height: 50px;
+    cursor: pointer
+  }
+
+  .text {
+    cursor: pointer;
+  }
+
+  .sort {
+    line-height: 50px;
+    vertical-align: middle;
+    cursor: move
+  }
+}
+
+.btn {
+  margin: 3px;
+}
+
+.m-0 {
+  margin:0;
+}
+.p-0 {
+  padding:0;
+}

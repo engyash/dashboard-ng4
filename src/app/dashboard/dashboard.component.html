@@ -1,19 +1,19 @@
 ﻿
-  <div class="col-md-12" style="padding:2px;"> 
-      <div class="lower widget">
+  <div class="col-md-12 dashboard"> 
+      <div class="dashboard-widget">
         <vertical-split-pane primary-component-initialratio="0.8">
           <div class="split-pane-content-primary">     
             <div class="alert-success">{{statusMessage}}</div>
             <hr>
-            <input type="button" value="Add New Projekt" class="btn btn-default" (click)="addProject()" />
-            <div style="overflow:auto;padding-top:5px;">
+            <input type="button" value="Add New Projekt" class="btn btn-default m-0" (click)="addProject()" />
+            <div class="project-list">
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <td>Id</td>
                     <td>Title</td>
                     <td>Color</td>                    
-                    <td style="width:15%;text-align:center;">Action</td>
+                    <td class="text-center" width="15%">Action</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,16 +26,15 @@
             </div>            
           </div>
           <div class="split-pane-content-secondary"  [sortablejs]="projects"  [sortablejsOptions]="{ animation: 1000 }">            
-            <div class="col-md-12" 
-                 style="margin-top:2px;"                  
+            <div class="col-md-12 project-list"                                  
                  *ngFor="let project of projects"
                  [ngStyle]="{'background-color':selectedProject && selectedProject.Id==project.Id?project.Color:'lightgray','color':selectedProject && selectedProject.Id==project.Id?'#fff':'#000'}">
               <div class="row"
                    (click)="selectProject(project)">
-                <div class="col-md-2" [ngStyle]="{'border-color':project.Color}" style="border-left:4px solid;height:50px;cursor:pointer"
+                <div class="col-md-2 sno" [ngStyle]="{'border-color':project.Color}"
                      >#{{project.Id}}</div>
-                <div class="col-md-8" style="cursor:pointer"><b>{{project.Title}}:</b><br />{{project.Text}}</div>
-                <div class="col-md-1" style="line-height:50px;vertical-align:middle;cursor:move"><i class="fa fa-ellipsis-v"></i></div>
+                <div class="col-md-8 text"><b>{{project.Title}}:</b><br />{{project.Text}}</div>
+                <div class="col-md-1 sort"><i class="fa fa-ellipsis-v"></i></div>
               </div>
             </div>
           
@@ -50,7 +49,7 @@
               <td>{{project.Id}}</td>
               <td>{{project.Title}}</td>
               <td>{{project.Color}}</td>
-              <td  style="text-align:center;">
+              <td class="text-center">
                 <input type="button" value="Edit" class="btn btn-default" (click)="editProject(project)" />
                 <input type="button" value="Delete" (click)="deleteProject(project)" class="btn btn-danger" />
               </td>
@@ -67,7 +66,7 @@
               <td>
                 <input type="text" [(ngModel)]="selProject.Color"  class="form-control" />
               </td>
-              <td style="text-align:center;">
+              <td class="text-center">
                 <input type="button" value="Save" (click)="saveProject()" class="btn btn-success" />
                 <input type="button" value="Cancel" (click)="cancel()" class="btn btn-warning" />
               </td>
