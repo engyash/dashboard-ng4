@@ -34,8 +34,12 @@ export class DashboardComponent implements OnInit {
     }
 
     private loadProject() {
-        this.projects = [{ Id: 1, Title: 'test title 1', Color: 'Blue', Text: 'testing 1' },
-            { Id: 2, Title: 'test title 2', Color: 'Red', Text: 'testing 2' }];
+        this.projects = [{ Id: 12, Title: 'Projekt Paris', Color: 'Red', Text: 'Paris details' },
+            { Id: 111, Title: 'Projekt New York', Color: 'Orange', Text: 'New York details' },
+            { Id: 119, Title: 'Projekt Zurich', Color: 'Green', Text: 'Zurich details' },
+            { Id: 214, Title: 'Projekt Barcelona', Color: 'Pink', Text: 'Barcelona details' },
+            { Id: 289, Title: 'Projekt Hong Kong', Color: 'Magenta', Text: 'Hong Kong details' },
+            { Id: 325, Title: 'Projekt Madrid', Color: 'Blue', Text: 'Madrid details' }];
     }
 
     //5. Add Project
@@ -50,7 +54,12 @@ export class DashboardComponent implements OnInit {
 
     //6. Edit Project
     editProject(project: Project) {
-        this.selProject = project;
+        this.selProject = <any>{
+            Id: project.Id,
+            Title: project.Title,
+            Color: project.Color,
+            Text: project.Text,
+        };
     }
 
     //7. Load either Read-Onoy Template or EditTemplate
@@ -69,18 +78,42 @@ export class DashboardComponent implements OnInit {
 
             this.statusMessage = 'Record Added Successfully.',
             this.isNewRecord = false;
+            this.projects.filter((obj)=> {
+                if (obj.Id == this.selProject.Id)
+                {
+                    obj.Id = this.selProject.Id;
+                    obj.Title = this.selProject.Title;
+                    obj.Color = this.selProject.Color;
+                    obj.Text = this.selProject.Text;
+                    console.log(obj);
+                }
+            });
+            
+
             this.selProject = null;
 
         } else {
             //edit the record
-                this.statusMessage = 'Record Updated Successfully.',
+            this.statusMessage = 'Record Updated Successfully.';
+                this.projects.filter((obj) => {
+                    if (obj.Id == this.selProject.Id) {
+                        obj.Id = this.selProject.Id;
+                        obj.Title = this.selProject.Title;
+                        obj.Color = this.selProject.Color;
+                        obj.Text = this.selProject.Text;
+                        console.log(obj);
+                    }
+                });
             this.selProject = null;
 
         }
     }
     //9. Cancel edit
     cancel() {
+        if (this.isNewRecord)
+            this.deleteProject(this.selProject);
         this.selProject = null;
+        this.isNewRecord = false;
     }
     //10 Delete Project
     deleteProject(project: Project) {

@@ -35,7 +35,7 @@
                    (click)="selectProject(project)">
                 <div class="col-md-2" [ngStyle]="{'border-color':project.Color}" style="border-left:4px solid;height:50px;cursor:pointer"
                      >#{{project.Id}}</div>
-                <div class="col-md-8" style="cursor:pointer"><b>{{project.Title}}</b><br />{{project.Text}}</div>
+                <div class="col-md-8" style="cursor:pointer"><b>{{project.Title}}:</b><br />{{project.Text}}</div>
                 <div class="col-md-1" style="line-height:50px;vertical-align:middle;cursor:move"><i class="fa fa-ellipsis-v"></i></div>
               </div>
             </div>
@@ -62,13 +62,13 @@
             <!--The Html Template for Editable Rows-->
             <ng-template #editTemplate>
               <td>
-                <input type="text" [(ngModel)]="selProject.Id" readonly disabled />
+                {{selProject.Id}}
               </td>
               <td>
-                <input type="text" [(ngModel)]="selProject.Title" />
+                <input type="text" [(ngModel)]="selProject.Title"  class="form-control"  />
               </td>
               <td>
-                <input type="text" [(ngModel)]="selProject.Color" />
+                <input type="text" [(ngModel)]="selProject.Color"  class="form-control" />
               </td>
               <td>
                 <input type="button" value="Save" (click)="saveProject()" class="btn btn-success" />

@@ -16,8 +16,9 @@
 }
 
 .widget {
-  height: 500px;
+  min-height: 500px !important;
   border: 1px solid gray;
+  border-bottom:0;
 }
 
 .lower {
