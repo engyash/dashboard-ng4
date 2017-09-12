@@ -27,7 +27,9 @@
     "zone.js": "^0.8.14",
     "bootstrap": "^3.3.7",
     "ng2-split-pane": "^1.4.0",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "sortablejs": "^1.6.1",
+    "angular-sortablejs": "^2.0.6"
   },
   "devDependencies": {
     "@angular/cli": "1.2.6",
